@@ -9,7 +9,7 @@
 ---
 
 ## 🌟 Project Overview
-**LegalClear AI** is a GenAI-powered platform to **Demystify Legal Documents**.  
+**LegalEase AI** is a GenAI-powered platform to **Demystify Legal Documents**.  
 Upload your legal document → Get **simplified summaries, key clauses, and chatbot Q&A** instantly.  
 No more legal jargon confusion – **Law made simple for everyone!** 🚀
 
