@@ -57,39 +57,41 @@ const simplifyButton = document.querySelector('.simplify-button');
 const demoInput = document.querySelector('.input-area textarea');
 const demoOutput = document.querySelector('.output-area .result');
 
-simplifyButton.addEventListener('click', () => {
-    const loadingText = "Analyzing and simplifying...";
-    demoOutput.innerHTML = `
-        <div class="loading">
-            ${loadingText}
-            <div class="loading-bar"></div>
-        </div>
-    `;
-    
-    setTimeout(() => {
-        const sampleOutput = `
-            <div class="simplified-text">
-                <h4>📑 Summary:</h4>
-                <p>This is a rental agreement that outlines your rights and responsibilities as a tenant.</p>
-                
-                <h4>🔑 Key Points:</h4>
-                <ul>
-                    <li>Rent is due on the 1st of each month</li>
-                    <li>Security deposit: $1,000</li>
-                    <li>No pets allowed without written permission</li>
-                </ul>
-                
-                <h4>⚠️ Important Terms:</h4>
-                <p>30-day notice required before moving out</p>
+if (simplifyButton) {
+    simplifyButton.addEventListener('click', () => {
+        demoOutput.innerHTML = `
+            <div class="loading">
+                Analyzing and simplifying...
+                <div class="loading-bar"></div>
             </div>
         `;
-        demoOutput.innerHTML = sampleOutput;
-    }, 2000);
-});
+        
+        setTimeout(() => {
+            demoOutput.innerHTML = `
+                <div class="simplified-text">
+                    <h4>📑 Summary:</h4>
+                    <p>This is a rental agreement that outlines your rights and responsibilities as a tenant.</p>
+                    
+                    <h4>🔑 Key Points:</h4>
+                    <ul>
+                        <li>Rent is due on the 1st of each month</li>
+                        <li>Security deposit: $1,000</li>
+                        <li>No pets allowed without written permission</li>
+                    </ul>
+                    
+                    <h4>⚠️ Important Terms:</h4>
+                    <p>30-day notice required before moving out</p>
+                </div>
+            `;
+        }, 2000);
+    });
+}
 
 // Particle Background
 function createParticles() {
     const particlesContainer = document.getElementById('particles');
+    if (!particlesContainer) return;
+
     for (let i = 0; i < 50; i++) {
         const particle = document.createElement('div');
         particle.className = 'particle';
@@ -104,21 +106,20 @@ function createParticles() {
 const hamburger = document.querySelector('.hamburger');
 const navLinks = document.querySelector('.nav-links');
 
-hamburger.addEventListener('click', () => {
-    navLinks.classList.toggle('active');
-    hamburger.classList.toggle('active');
-});
-
-// Initialize
-document.addEventListener('DOMContentLoaded', () => {
-    typeWriter();
-    createParticles();
-});
+if (hamburger) {
+    hamburger.addEventListener('click', () => {
+        navLinks.classList.toggle('active');
+        hamburger.classList.toggle('active');
+    });
+}
 
 // Chatbot functionality
 function toggleChat() {
     const chatContainer = document.querySelector('.chatbot-container');
-    chatContainer.style.display = chatContainer.style.display === 'none' ? 'block' : 'none';
+    if (chatContainer) {
+        chatContainer.style.display = 
+            chatContainer.style.display === 'block' ? 'none' : 'block';
+    }
 }
 
 function sendMessage() {
@@ -129,7 +130,6 @@ function sendMessage() {
         addMessage('user', message);
         input.value = '';
         
-        // Simulate bot response
         setTimeout(() => {
             const responses = [
                 "I can help you understand that legal term. Could you provide more context?",
@@ -152,7 +152,7 @@ function addMessage(type, text) {
     messagesContainer.scrollTop = messagesContainer.scrollHeight;
 }
 
-// Animate stats when in view
+// Animate stats
 function animateStats() {
     const stats = document.querySelectorAll('.stat-number');
     stats.forEach(stat => {
@@ -169,27 +169,26 @@ function animateStats() {
                 stat.textContent = target;
             }
         };
-        
         updateCount();
     });
 }
 
-// Initialize new features
+// Initialize all features
 document.addEventListener('DOMContentLoaded', () => {
-    // Previous initialization code...
-    
-    // Observe stats section for animation
-    const statsObserver = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                animateStats();
-                statsObserver.unobserve(entry.target);
-            }
-        });
-    });
-    
-    const statsSection = document.querySelector('.stats-grid');
+    typeWriter();
+    createParticles();
+
+    // Observe stats section
+    const statsSection = document.querySelector('.stats, .stats-grid');
     if (statsSection) {
+        const statsObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    animateStats();
+                    statsObserver.unobserve(entry.target);
+                }
+            });
+        });
         statsObserver.observe(statsSection);
     }
 });
