@@ -1,252 +1,79 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="light">
+<html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>LegalClear AI — Demystifying Legal Documents</title>
-  <meta name="description" content="Upload, Understand, Simplify legal documents with an AI-style experience (frontend only).">
-  <link rel="stylesheet" href="style.css" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Demystifying Legal Documents</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/your-kit-code.js" crossorigin="anonymous"></script>
 </head>
 <body>
-  <!-- ===== Top Announcement Bar ===== -->
-  <div class="announce" role="status" aria-live="polite">
-    <div class="ticker">
-      <span>🏆 Hackathon Build • Frontend Only • Backend AI will plug later • Hindi/English Ready • Dark Mode</span>
-      <span>🔐 No data uploaded to server in this demo • Client-side only</span>
-      <span>⚖️ Demystifying Legal Documents • Upload → Summarize → Ask</span>
-    </div>
-  </div>
-
-  <!-- ===== Header / Navbar ===== -->
-  <header class="header" id="top">
-    <a class="brand" href="#top" aria-label="LegalClear AI Home">
-      <!-- Inline SVG Logo -->
-      <svg width="28" height="28" viewBox="0 0 24 24" aria-hidden="true">
-        <path d="M12 2l7 4v6c0 5-4 8-7 10-3-2-7-5-7-10V6l7-4z" fill="currentColor" opacity="0.85"/>
-        <path d="M9 9h6v2H9zM9 12h6v2H9zM9 15h4v2H9z" fill="currentColor"/>
-      </svg>
-      <span>LegalClear <strong>AI</strong></span>
-    </a>
-
-    <nav class="nav" aria-label="Primary">
-      <button class="nav-toggle" aria-expanded="false" aria-controls="nav-list">☰</button>
-      <ul id="nav-list">
-        <li><a href="#features">Features</a></li>
-        <li><a href="#analyze">Analyze</a></li>
-        <li><a href="#chat">Q&A</a></li>
-        <li><a href="#how">How it works</a></li>
-        <li><a href="#faq">FAQ</a></li>
-      </ul>
+    <nav class="navbar">
+        <div class="logo">LegalEase</div>
+        <div class="nav-links">
+            <a href="#home" class="active">Home</a>
+            <a href="#features">Features</a>
+            <a href="#demo">Demo</a>
+            <a href="#about">About</a>
+            <a href="#team">Team</a>
+        </div>
+        <div class="hamburger">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
     </nav>
 
-    <div class="controls">
-      <button id="langBtn" class="ghost" aria-label="Toggle Hindi/English">EN/हिं</button>
-      <button id="themeBtn" class="ghost" aria-label="Toggle dark mode">☾</button>
-      <a class="cta" href="#analyze">Get Started</a>
-    </div>
-  </header>
-
-  <!-- ===== Hero ===== -->
-  <section class="hero section">
-    <div class="hero-text">
-      <h1 class="gradient-text">
-        Demystifying <span class="wiggle">Legal</span> Documents
-      </h1>
-      <p class="sub">
-        Upload • Understand • Simplify — <span class="em">No more jargon</span>.  
-        Frontend demo with smart mocks. Backend AI connects later.
-      </p>
-      <div class="hero-actions">
-        <a class="btn" href="#analyze">Try a Sample Doc</a>
-        <a class="btn ghost" href="#chat">Ask a Question</a>
-      </div>
-      <div class="hero-badges" aria-label="Highlights">
-        <span>⚡ Fast mock AI</span><span>🧠 Key clauses</span><span>🗣️ EN/Hindi</span><span>🌓 Dark Mode</span>
-      </div>
-    </div>
-    <div class="hero-card float">
-      <div class="card-header">Quick Preview</div>
-      <div class="card-body">
-        <p><strong>“Rent due by 5th, ₹15,000/month.”</strong></p>
-        <p>Late fee: ₹500/day • Security deposit: ₹30,000 • Term: 11 months</p>
-      </div>
-      <div class="card-footer">
-        <button class="chip">Penalty</button>
-        <button class="chip">Payment</button>
-        <button class="chip">Dates</button>
-      </div>
-    </div>
-  </section>
-
-  <!-- ===== Feature Grid ===== -->
-  <section id="features" class="section container">
-    <h2 class="section-title">Why you'll win judges’ hearts 💙</h2>
-    <div class="grid features-grid">
-      <article class="feat fade-in">
-        <h3>Smart Summaries</h3>
-        <p>Generate plain-language takeaways with risks, obligations, and actions.</p>
-      </article>
-      <article class="feat fade-in">
-        <h3>Key Clauses</h3>
-        <p>Auto-spot payment terms, dates, penalties, parties, and termination.</p>
-      </article>
-      <article class="feat fade-in">
-        <h3>Q&A Chat</h3>
-        <p>Ask natural questions like “Penalty kya hai?” and get instant answers.</p>
-      </article>
-      <article class="feat fade-in">
-        <h3>EN • हिंदी</h3>
-        <p>One-click bilingual view — users choose comfort language.</p>
-      </article>
-      <article class="feat fade-in">
-        <h3>Privacy-first</h3>
-        <p>This demo runs in-browser. No uploads. (Backend will add real AI.)</p>
-      </article>
-      <article class="feat fade-in">
-        <h3>Delightful UX</h3>
-        <p>Animations, keyboard shortcuts, copy & download, accessibility.</p>
-      </article>
-    </div>
-  </section>
-
-  <!-- ===== Analyzer ===== -->
-  <section id="analyze" class="section container">
-    <h2 class="section-title">Analyze your document</h2>
-
-    <div class="uploader" aria-label="File uploader" tabindex="0">
-      <input id="fileInput" type="file" accept=".txt,.pdf,.doc,.docx" aria-label="Choose document" />
-      <p>Drag & drop a file here or click to choose</p>
-      <small>Demo note: .txt best for client-side preview. PDF/Docx will use sample text.</small>
-    </div>
-
-    <div class="actions-row">
-      <button id="sampleBtn" class="btn">Use Sample Rental Agreement</button>
-      <button id="clearBtn" class="btn ghost">Clear</button>
-      <div class="spacer"></div>
-      <button id="summarizeBtn" class="btn primary">Summarize</button>
-    </div>
-
-    <div class="panels">
-      <div class="panel">
-        <div class="panel-header">Source Text</div>
-        <textarea id="sourceText" placeholder="Your document text will appear here…" spellcheck="false"></textarea>
-        <div class="panel-footer">
-          <button class="chip" data-insert="Rent amount is ₹15,000 per month.">+ Amount</button>
-          <button class="chip" data-insert="Deposit is ₹30,000 refundable.">+ Deposit</button>
-          <button class="chip" data-insert="Late fee ₹500 per day after 5th.">+ Penalty</button>
-          <button class="chip" data-insert="Agreement term is 11 months from 01/10/2025.">+ Dates</button>
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1>Demystifying Legal Documents</h1>
+            <div class="typewriter">
+                <span id="typed-text"></span>
+                <span class="cursor">|</span>
+            </div>
+            <button class="cta-button">Get Started</button>
         </div>
-      </div>
+        <div id="particles"></div>
+    </section>
 
-      <div class="panel">
-        <div class="panel-header">Summary & Key Points</div>
-        <div class="result-toolbar">
-          <button id="copySummary" class="ghost">Copy</button>
-          <button id="downloadSummary" class="ghost">Download .txt</button>
+    <section id="features" class="features">
+        <h2>Features</h2>
+        <div class="feature-cards">
+            <div class="feature-card">
+                <i class="fas fa-file-alt"></i>
+                <h3>Summarize Documents</h3>
+                <p>Get quick, accurate summaries of complex legal documents</p>
+            </div>
+            <div class="feature-card">
+                <i class="fas fa-highlighter"></i>
+                <h3>Highlight Key Points</h3>
+                <p>Important clauses and terms automatically highlighted</p>
+            </div>
+            <div class="feature-card">
+                <i class="fas fa-language"></i>
+                <h3>Simplify Legal Terms</h3>
+                <p>Complex legal jargon translated to plain English</p>
+            </div>
         </div>
-        <div id="summary" class="summary">
-          <div class="placeholder">Click “Summarize” to generate a plain-language overview.</div>
+    </section>
+
+    <section id="demo" class="demo">
+        <h2>Try It Out</h2>
+        <div class="demo-container">
+            <div class="input-area">
+                <textarea placeholder="Paste your legal text here..."></textarea>
+                <button class="simplify-button">Simplify Now</button>
+            </div>
+            <div class="output-area">
+                <h3>Simplified Version</h3>
+                <div class="result">
+                    Your simplified text will appear here...
+                </div>
+            </div>
         </div>
-      </div>
-    </div>
+    </section>
 
-    <div class="clauses-grid">
-      <div class="clause-card">
-        <h4>💸 Payment</h4>
-        <ul id="clausePayment"></ul>
-      </div>
-      <div class="clause-card">
-        <h4>📅 Dates & Term</h4>
-        <ul id="clauseDates"></ul>
-      </div>
-      <div class="clause-card">
-        <h4>⚠️ Penalties</h4>
-        <ul id="clausePenalty"></ul>
-      </div>
-      <div class="clause-card">
-        <h4>🧑‍🤝‍🧑 Parties</h4>
-        <ul id="clauseParties"></ul>
-      </div>
-    </div>
-  </section>
-
-  <!-- ===== Chatbot ===== -->
-  <section id="chat" class="section container">
-    <h2 class="section-title">Ask your document anything</h2>
-    <div class="chat">
-      <div id="chatLog" class="chat-log" aria-live="polite"></div>
-      <div class="chat-suggest">
-        <button class="chip ask">What is the rent?</button>
-        <button class="chip ask">Penalty kya hai?</button>
-        <button class="chip ask">Total payable this month?</button>
-        <button class="chip ask">Termination clause?</button>
-      </div>
-      <div class="chat-input">
-        <input id="chatInput" type="text" placeholder="Type your question…" aria-label="Your question"/>
-        <button id="chatSend" class="btn">Send</button>
-      </div>
-      <p class="muted">Demo is mock logic from extracted clauses. Real AI will replace this.</p>
-    </div>
-  </section>
-
-  <!-- ===== How it works ===== -->
-  <section id="how" class="section container">
-    <h2 class="section-title">How it works</h2>
-    <ol class="steps">
-      <li><span>1</span> Upload a doc (no server upload in demo)</li>
-      <li><span>2</span> Client-side text parsing + smart regex</li>
-      <li><span>3</span> Generate summary & key clauses</li>
-      <li><span>4</span> Ask questions in natural language</li>
-      <li><span>5</span> (Later) Plug OpenAI/HF backend</li>
-    </ol>
-  </section>
-
-  <!-- ===== FAQ ===== -->
-  <section id="faq" class="section container">
-    <h2 class="section-title">FAQ</h2>
-    <details>
-      <summary>Is this real AI?</summary>
-      <p>This is a frontend-only demo with smart heuristics. We’ll connect real AI in the backend.</p>
-    </details>
-    <details>
-      <summary>Does my file get uploaded?</summary>
-      <p>No. In this demo, everything stays in your browser.</p>
-    </details>
-    <details>
-      <summary>Can I use Hindi?</summary>
-      <p>Yes! Toggle EN/हिं for bilingual summaries.</p>
-    </details>
-  </section>
-
-  <!-- ===== Footer ===== -->
-  <footer class="footer">
-    <div class="container foot-grid">
-      <div>
-        <div class="brand foot-brand">
-          <svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true">
-            <path d="M12 2l7 4v6c0 5-4 8-7 10-3-2-7-5-7-10V6l7-4z" fill="currentColor" opacity="0.9"/>
-          </svg>
-          <span>LegalClear <strong>AI</strong></span>
-        </div>
-        <p class="muted">Making law simple, one document at a time.</p>
-      </div>
-      <nav aria-label="Footer">
-        <a href="#features">Features</a>
-        <a href="#analyze">Analyze</a>
-        <a href="#chat">Q&A</a>
-        <a href="#how">How it works</a>
-        <a href="#faq">FAQ</a>
-      </nav>
-      <div class="tiny">
-        <button class="ghost small" id="toTop">↑ Back to top</button>
-        <p>© 2025 LegalClear AI • Frontend demo</p>
-      </div>
-    </div>
-  </footer>
-
-  <!-- Toast -->
-  <div id="toast" role="status" aria-live="polite"></div>
-
-  <script src="script.js"></script>
+    <!-- Additional sections to follow -->
 </body>
 </html>
