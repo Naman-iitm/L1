@@ -114,3 +114,82 @@ document.addEventListener('DOMContentLoaded', () => {
     typeWriter();
     createParticles();
 });
+
+// Chatbot functionality
+function toggleChat() {
+    const chatContainer = document.querySelector('.chatbot-container');
+    chatContainer.style.display = chatContainer.style.display === 'none' ? 'block' : 'none';
+}
+
+function sendMessage() {
+    const input = document.getElementById('userInput');
+    const message = input.value.trim();
+    
+    if (message) {
+        addMessage('user', message);
+        input.value = '';
+        
+        // Simulate bot response
+        setTimeout(() => {
+            const responses = [
+                "I can help you understand that legal term. Could you provide more context?",
+                "Let me simplify that for you. This typically means...",
+                "That's a common question about legal documents. Here's what you need to know...",
+                "I can break that down into simpler terms. Would you like me to explain further?"
+            ];
+            const randomResponse = responses[Math.floor(Math.random() * responses.length)];
+            addMessage('bot', randomResponse);
+        }, 1000);
+    }
+}
+
+function addMessage(type, text) {
+    const messagesContainer = document.getElementById('chatMessages');
+    const messageDiv = document.createElement('div');
+    messageDiv.className = `message ${type}`;
+    messageDiv.textContent = text;
+    messagesContainer.appendChild(messageDiv);
+    messagesContainer.scrollTop = messagesContainer.scrollHeight;
+}
+
+// Animate stats when in view
+function animateStats() {
+    const stats = document.querySelectorAll('.stat-number');
+    stats.forEach(stat => {
+        const target = parseInt(stat.getAttribute('data-target'));
+        const increment = target / 100;
+        let current = 0;
+        
+        const updateCount = () => {
+            if (current < target) {
+                current += increment;
+                stat.textContent = Math.round(current);
+                setTimeout(updateCount, 20);
+            } else {
+                stat.textContent = target;
+            }
+        };
+        
+        updateCount();
+    });
+}
+
+// Initialize new features
+document.addEventListener('DOMContentLoaded', () => {
+    // Previous initialization code...
+    
+    // Observe stats section for animation
+    const statsObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                animateStats();
+                statsObserver.unobserve(entry.target);
+            }
+        });
+    });
+    
+    const statsSection = document.querySelector('.stats-grid');
+    if (statsSection) {
+        statsObserver.observe(statsSection);
+    }
+});
