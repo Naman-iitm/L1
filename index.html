@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LegalClear AI</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="logo">LegalClear AI</div>
+        <ul class="nav-links">
+            <li><a href="#home" class="active">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <h1>Demystifying Legal Documents with AI</h1>
+        <p class="tagline">Upload, Understand, Simplify</p>
+        <a href="#upload" class="btn-primary">Get Started</a>
+    </section>
+
+    <!-- Document Upload Section -->
+    <section class="upload-section" id="upload">
+        <h2>Upload Your Legal Document</h2>
+        <div class="upload-box">
+            <input type="file" id="fileInput" accept=".pdf,.doc,.docx,.txt">
+            <label for="fileInput" class="upload-label">Click or drag to upload</label>
+        </div>
+        <div class="extracted-text" id="extractedText">
+            <h3>Extracted Text</h3>
+            <p id="dummyText">[Document text will appear here]</p>
+        </div>
+        <button class="btn-secondary" id="summarizeBtn">Summarize Document</button>
+        <div class="summary" id="summary">
+            <!-- Dummy summary will appear here -->
+        </div>
+    </section>
+
+    <!-- Chatbot Section -->
+    <section class="chatbot-section" id="chatbot">
+        <h2>Ask LegalClear AI</h2>
+        <div class="chat-window" id="chatWindow">
+            <!-- Chat messages will appear here -->
+        </div>
+        <div class="chat-input-box">
+            <input type="text" id="chatInput" placeholder="Type your question...">
+            <button id="sendBtn" class="btn-primary">Send</button>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2025 LegalClear AI. All rights reserved.</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
